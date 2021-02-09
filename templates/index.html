@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block header %}Home Page{% endblock %}
+{% block content %}
+
+
+<p>
+    <div class="container">
+        <div class="row">
+            <br />
+            <h1>
+                What Dog Are You?
+            </h1>
+        </div>
+    </div>
+</p>
+
+{% for i in qs %}
+
+
+<form action="/home" method="POST">
+    <br />
+    <p class="quizQuestion"> {{i.pos}}) {{i.question}} </p>
+    <input type="radio" name={{i.pos}} id="1" value=-1 > Disagree Entirely </input>
+    <input type="radio" name={{i.pos}} id="2" value=-0.5> Disagree Mostly </input>
+    <input type="radio" name={{i.pos}} id="3" value=-0.25> Disagree Somewhat </input>
+    <input type="radio" name={{i.pos}} id="4" value=0 checked> Neutral </input>
+    <input type="radio" name={{i.pos}} id="5" value=0.25> Agree Somewhat </input>
+    <input type="radio" name={{i.pos}} id="6" value=0.5> Agree Mostly </input>
+    <input type="radio" name={{i.pos}} id="7" value=1 > Agree Entirly </input>
+
+    <br />
+    <br />
+    {% endfor %}
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <p><input type="submit" value="submit" /> </p>
+        </div>
+    </div>
+</form>
+
+
+
+    {% endblock %}
